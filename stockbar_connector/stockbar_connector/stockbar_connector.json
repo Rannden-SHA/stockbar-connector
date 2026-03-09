@@ -1,0 +1,7 @@
+{
+    "app_name": "stockbar_connector",
+    "app_title": "StockBar Connector",
+    "app_description": "Connects your local ERPNext server to StockBar-WEB cloud",
+    "app_publisher": "Gisbert Distribuciones",
+    "app_email": "info@stockbar.pro"
+}

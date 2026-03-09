@@ -1,0 +1,10 @@
+{
+    "module_name": "StockBar Connector",
+    "category": "Modules",
+    "label": "StockBar Connector",
+    "color": "#6366f1",
+    "icon": "octicon octicon-cloud",
+    "type": "module",
+    "description": "Cloud sync, license management, and POS data uplink to StockBar-WEB.",
+    "app": "stockbar_connector"
+}

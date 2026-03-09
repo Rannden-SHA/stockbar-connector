@@ -1,0 +1,1 @@
+# StockBar Settings DocType

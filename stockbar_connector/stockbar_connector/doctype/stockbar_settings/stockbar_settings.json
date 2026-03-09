@@ -1,0 +1,179 @@
+{
+    "name": "StockBar Settings",
+    "doctype": "DocType",
+    "module": "StockBar Connector",
+    "issingle": 1,
+    "is_virtual": 0,
+    "allow_rename": 0,
+    "engine": "InnoDB",
+    "fields": [
+        {
+            "label": "Connection",
+            "fieldname": "connection_section",
+            "fieldtype": "Section Break",
+            "description": "Configure the connection to StockBar-WEB Cloud"
+        },
+        {
+            "label": "License Key",
+            "fieldname": "license_key",
+            "fieldtype": "Password",
+            "reqd": 1,
+            "description": "Enter the license key provided by your StockBar administrator"
+        },
+        {
+            "label": "Cloud URL",
+            "fieldname": "cloud_url",
+            "fieldtype": "Data",
+            "options": "URL",
+            "reqd": 1,
+            "default": "https://stockbarweb.pro",
+            "description": "URL of the StockBar-WEB cloud server"
+        },
+        {
+            "label": "",
+            "fieldname": "col_break_1",
+            "fieldtype": "Column Break"
+        },
+        {
+            "label": "Enabled",
+            "fieldname": "is_enabled",
+            "fieldtype": "Check",
+            "default": "1",
+            "description": "Enable/disable cloud sync"
+        },
+        {
+            "label": "Connected",
+            "fieldname": "is_connected",
+            "fieldtype": "Check",
+            "read_only": 1,
+            "description": "Whether the server is currently connected to the cloud"
+        },
+        {
+            "label": "Test Connection",
+            "fieldname": "test_connection_btn",
+            "fieldtype": "Button",
+            "options": "test_connection",
+            "depends_on": "license_key"
+        },
+        {
+            "label": "Server Info",
+            "fieldname": "server_info_section",
+            "fieldtype": "Section Break"
+        },
+        {
+            "label": "Server Name",
+            "fieldname": "server_name",
+            "fieldtype": "Data",
+            "read_only": 1,
+            "description": "Name assigned by StockBar-WEB admin"
+        },
+        {
+            "label": "Business Mode",
+            "fieldname": "business_mode",
+            "fieldtype": "Select",
+            "options": "\nhospitality\nretail",
+            "default": "hospitality",
+            "description": "Operating mode: Hospitality (restaurant/bar) or Retail (shop)"
+        },
+        {
+            "label": "",
+            "fieldname": "col_break_2",
+            "fieldtype": "Column Break"
+        },
+        {
+            "label": "Sync Interval (seconds)",
+            "fieldname": "sync_interval",
+            "fieldtype": "Int",
+            "default": 60,
+            "description": "How often to poll the cloud for changes (handled by Frappe scheduler)"
+        },
+        {
+            "label": "Sync Status",
+            "fieldname": "sync_section",
+            "fieldtype": "Section Break"
+        },
+        {
+            "label": "Sync Status",
+            "fieldname": "sync_status",
+            "fieldtype": "Data",
+            "read_only": 1,
+            "default": "NOT_CONFIGURED",
+            "description": "Current sync status"
+        },
+        {
+            "label": "Last Sync",
+            "fieldname": "last_sync",
+            "fieldtype": "Datetime",
+            "read_only": 1
+        },
+        {
+            "label": "",
+            "fieldname": "col_break_3",
+            "fieldtype": "Column Break"
+        },
+        {
+            "label": "Last Sync Message",
+            "fieldname": "last_sync_message",
+            "fieldtype": "Small Text",
+            "read_only": 1
+        },
+        {
+            "label": "Actions",
+            "fieldname": "actions_section",
+            "fieldtype": "Section Break"
+        },
+        {
+            "label": "Manual Sync Now",
+            "fieldname": "manual_sync_btn",
+            "fieldtype": "Button",
+            "options": "manual_sync",
+            "depends_on": "eval:doc.is_enabled && doc.license_key"
+        },
+        {
+            "label": "Upload Backup Now",
+            "fieldname": "manual_backup_btn",
+            "fieldtype": "Button",
+            "options": "manual_backup",
+            "depends_on": "eval:doc.is_enabled && doc.license_key"
+        },
+        {
+            "label": "Local Config Cache",
+            "fieldname": "local_config_section",
+            "fieldtype": "Section Break",
+            "collapsible": 1
+        },
+        {
+            "label": "Terminal Config (JSON)",
+            "fieldname": "terminal_config_json",
+            "fieldtype": "Code",
+            "options": "JSON",
+            "read_only": 1
+        },
+        {
+            "label": "Printer Config (JSON)",
+            "fieldname": "printer_config_json",
+            "fieldtype": "Code",
+            "options": "JSON",
+            "read_only": 1
+        }
+    ],
+    "permissions": [
+        {
+            "role": "System Manager",
+            "read": 1,
+            "write": 1,
+            "create": 1
+        },
+        {
+            "role": "Administrator",
+            "read": 1,
+            "write": 1,
+            "create": 1
+        }
+    ],
+    "sort_field": "creation",
+    "sort_order": "DESC",
+    "track_changes": 1,
+    "modified_by": "Administrator",
+    "owner": "Administrator"
+}
