@@ -11,12 +11,12 @@
 ## 🏗️ Architecture
 
 ```
-┌──────────────────────┐          HTTPS          ┌───────────────────────┐
-│   LOCAL SERVER       │  ◄──────────────────►   │   STOCKBAR-WEB CLOUD  │
+┌──────────────────────┐           HTTPS          ┌───────────────────────┐
+│   LOCAL SERVER       │   ◄──────────────────►   │   STOCKBAR-WEB CLOUD  │
 │                      │                          │                       │
-│  ERPNext + URY POS   │   poll (every 1 min)     │  Fleet API            │
+│  ERPNext             │   poll (every X min)     │  Fleet API            │
 │  StockBar Connector  │ ──── sync-pull ────────► │  /api/fleet/sync-pull │
-│                      │ ◄─── tasks ──────────── │                       │
+│                      │  ◄─── tasks ──────────── │                       │
 │  POS Closing Entry   │                          │                       │
 │  ──► auto Z-report   │ ──── sync-push ────────► │  /api/fleet/sync-push │
 │                      │                          │                       │
@@ -47,7 +47,7 @@
 
 ### Option A: Automated (recommended)
 
-Use the [install_server.sh](https://github.com/Rannden-SHA/StockBar) provisioning script, which installs ERPNext + URY + this connector automatically.
+Use the install_server.sh provisioning script, which installs ERPNext + this connector automatically.
 
 ### Option B: Manual
 
