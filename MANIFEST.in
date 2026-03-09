@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include stockbar_connector *.css
+recursive-include stockbar_connector *.csv
+recursive-include stockbar_connector *.html
+recursive-include stockbar_connector *.ico
+recursive-include stockbar_connector *.js
+recursive-include stockbar_connector *.json
+recursive-include stockbar_connector *.md
+recursive-include stockbar_connector *.png
+recursive-include stockbar_connector *.py
+recursive-include stockbar_connector *.svg
+recursive-include stockbar_connector *.txt
+recursive-exclude stockbar_connector *.pyc
