@@ -1,8 +1,0 @@
-{
-    "name": "stockbar_connector",
-    "version": "1.0.0",
-    "description": "StockBar Cloud Connector for ERPNext",
-    "main": "index.js",
-    "scripts": {},
-    "license": "MIT"
-}
