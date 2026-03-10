@@ -2,12 +2,12 @@ from . import __version__ as app_version
 
 app_name = "stockbar_connector"
 app_title = "StockBar Connector"
-app_publisher = "Gisbert Distribuciones"
+app_publisher = "StockBar"
 app_description = "Connects your local ERPNext server to StockBar-WEB cloud for license management, POS sync, and remote configuration."
 app_email = "info@stockbar.pro"
 app_license = "MIT"
 app_icon_title = "StockBar"
-app_logo_url = "/assets/stockbar_connector/images/stockbar-icon.png"
+app_logo_url = "/assets/stockbar_connector/stockbarconnector.png"
 
 required_apps = ["erpnext"]
 
@@ -15,7 +15,7 @@ required_apps = ["erpnext"]
 add_to_apps_screen = [
     {
         "name": "stockbar_connector",
-        "logo": "/assets/stockbar_connector/images/stockbar-icon.png",
+        "logo": "/assets/stockbar_connector/stockbarconnector.png",
         "title": "StockBar",
         "route": "/app/stockbar-settings",
         "has_permission": "stockbar_connector.permission.check_app_permission",
@@ -49,7 +49,7 @@ doc_events = {
 
 # ─── Website/Splash ──────────────────────────────────────────────
 website_context = {
-    "splash_image": "/assets/stockbar_connector/images/stockbar-icon.png"
+    "splash_image": "/assets/stockbar_connector/stockbarconnector.png"
 }
 
 # ─── Fixtures ────────────────────────────────────────────────────
