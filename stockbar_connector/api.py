@@ -605,3 +605,41 @@ def test_connection():
         return {"status": "error", "message": "Cannot reach StockBar Cloud server"}
     except Exception as e:
         return {"status": "error", "message": str(e)}
+
+
+@frappe.whitelist()
+def get_config():
+    """Return local configuration to StockBar Cloud."""
+    settings = _get_settings()
+    # In a full implementation, this extracts active ERPNext POS profiles, taxes, etc.
+    return {
+        "business_mode": settings.business_mode if settings else "hospitality",
+        "pos_profile": {},
+        "tax_config": {},
+        "payment_config": {},
+        "price_list_config": {},
+        "warehouse_config": {},
+        "print_config": {},
+        "ury_config": {},
+        "company_config": {}
+    }
+
+
+@frappe.whitelist(methods=["POST"])
+def apply_config(**kwargs):
+    """Receive and apply configuration directly from Cloud."""
+    settings = _get_settings()
+    if not settings:
+        frappe.throw("StockBar Settings not configured", exc=frappe.PermissionError)
+
+    try:
+        # Reutilizamos el handler del push completo
+        handle_full_config_push(kwargs, settings)
+        
+        # También actualizamos la base de config raw si nos la mandan
+        frappe.db.commit()
+        return {"status": "success", "message": "Configuration received and applied successfully"}
+        
+    except Exception as e:
+        _log_sync(f"Apply config error: {str(e)}", "error")
+        frappe.throw(f"Failed to apply config: {str(e)}")
